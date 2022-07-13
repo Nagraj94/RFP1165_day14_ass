@@ -86,6 +86,26 @@ public class Linked{
             prev.next=null;
         }
     }
+    public void findEle() {
+        if(head==null) {
+            System.out.println("List is empty");
+        }
+        else {
+            System.out.println("Enter the element to search");
+            int e = Linked.sc.nextInt();
+            Node temp=head;
+            while(temp.next!=null) {
+                if(temp.data==e) {
+                    System.out.println("Data found");
+                    break;
+                }
+                temp=temp.next;
+            }
+            if(temp.next==null) {
+                System.out.println("No data found");
+            }
+        }
+    }
     public void display() {
         if(head==null) {
             System.out.println("List is empty");
@@ -103,7 +123,8 @@ public class Linked{
     public static void main(String[] args) {
         Linked list = new Linked();
         while (true){
-            System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between.\n4. Delete element from last.\n5. Delete element from last");
+            System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between.\n4. Delete element from last." +
+                    "\n5. Delete element from last.\n6. Search element");
             int choice = sc.nextInt();
             if (choice == 1) {
                 System.out.print("Enter no of element to add at first: ");
@@ -117,7 +138,10 @@ public class Linked{
                 list.delAtFirst();
             } else if (choice == 5) {
                 list.delLast();
-            } else {
+            }else if (choice == 6) {
+                list.findEle();
+            }
+            else {
                 System.out.println(" ");
             }
             list.display();
