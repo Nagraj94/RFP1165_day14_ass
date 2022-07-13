@@ -64,6 +64,16 @@ public class Linked{
             }
         }
     }
+    public void delAtFirst() {
+        if(head==null) {
+            System.out.println("List is empty");
+        }
+        else {
+            Node temp= head.next;
+            head.next=null;
+            head=temp;
+        }
+    }
     public void display() {
         if(head==null) {
             System.out.println("List is empty");
@@ -78,10 +88,9 @@ public class Linked{
         }
     }
 
-
     public static void main(String[] args) {
         while (true){
-            System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between");
+            System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between.\n4. Delete element from last");
             int choice = sc.nextInt();
             Linked list = new Linked();
             if (choice == 1) {
@@ -90,6 +99,8 @@ public class Linked{
                 list.addFirst();
             } else if (choice == 3) {
                 list.addBetween();
+            } else if (choice == 4) {
+                list.delAtFirst();
             } else {
                 System.out.println(" ");
             }
