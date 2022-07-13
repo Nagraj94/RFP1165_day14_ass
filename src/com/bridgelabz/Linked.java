@@ -15,7 +15,6 @@ public class Linked{
                 head=newNode;
             }
             else {
-                System.out.println("Enter no of element to add at first");
                 Node temp=head;
                 while(temp.next!=null) {
                     temp=temp.next;
@@ -31,7 +30,6 @@ public class Linked{
             System.out.println("List is empty");
         }
         else {
-            System.out.println("Enter no of element to add at first");
             int n = Linked.sc.nextInt();
             for(int i=0; i<n; i++) {
                 int e = Linked.sc.nextInt();
@@ -74,6 +72,20 @@ public class Linked{
             head=temp;
         }
     }
+    public void delLast() {
+        if(head==null) {
+            System.out.println("List is empty");
+        }
+        else {
+            Node temp =head;
+            Node prev=head;
+            while(temp.next!=null) {
+                prev=temp;
+                temp=temp.next;
+            }
+            prev.next=null;
+        }
+    }
     public void display() {
         if(head==null) {
             System.out.println("List is empty");
@@ -89,18 +101,22 @@ public class Linked{
     }
 
     public static void main(String[] args) {
+        Linked list = new Linked();
         while (true){
-            System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between.\n4. Delete element from last");
+            System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between.\n4. Delete element from last.\n5. Delete element from last");
             int choice = sc.nextInt();
-            Linked list = new Linked();
             if (choice == 1) {
+                System.out.print("Enter no of element to add at first: ");
                 list.add();
             } else if (choice ==2) {
+                System.out.print("Enter no of element to add at first: ");
                 list.addFirst();
             } else if (choice == 3) {
                 list.addBetween();
             } else if (choice == 4) {
                 list.delAtFirst();
+            } else if (choice == 5) {
+                list.delLast();
             } else {
                 System.out.println(" ");
             }
