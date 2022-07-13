@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Linked{
@@ -106,6 +107,43 @@ public class Linked{
             }
         }
     }
+    public void sort() {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        System.out.println("Enter no of elements to add :");
+        int n = Linked.sc.nextInt();
+        System.out.println("Enter the elements");
+        for(int i=0; i<n; i++) {
+            int ele = Linked.sc.nextInt();
+            list.add(ele);
+        }
+        int temp1=0;
+        while(list.size()!=1) {
+            temp1 =list.get(0);
+            for(int i=0; i<list.size(); i++) {
+                if(temp1>list.get(i)) {
+                    temp1=list.get(i);
+                }
+            }
+            list1.add(temp1);
+            list.remove(Integer.valueOf(temp1));
+        }
+        list1.add(list.get(0));
+        for(int i=0;i<list1.size();i++) {
+            Node newNode= new Node(list1.get(i));
+            if(head==null) {
+                head=newNode;
+            }
+            else {
+                Node temp=head;
+                while(temp.next!=null) {
+                    temp=temp.next;
+                }
+                temp.next=newNode;
+            }
+        }
+        System.out.println("Sorted linked list is created");
+    }
     public void display() {
         if(head==null) {
             System.out.println("List is empty");
@@ -124,7 +162,7 @@ public class Linked{
         Linked list = new Linked();
         while (true){
             System.out.println("1. Add element.\n2. Add element at last.\n3. Add element in between.\n4. Delete element from last." +
-                    "\n5. Delete element from last.\n6. Search element");
+                    "\n5. Delete element from last.\n6. Search element.\n7. Sorting elements");
             int choice = sc.nextInt();
             if (choice == 1) {
                 System.out.print("Enter no of element to add at first: ");
@@ -140,8 +178,9 @@ public class Linked{
                 list.delLast();
             }else if (choice == 6) {
                 list.findEle();
-            }
-            else {
+            } else if (choice == 7) {
+                list.sort();
+            } else {
                 System.out.println(" ");
             }
             list.display();
